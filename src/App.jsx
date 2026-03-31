@@ -165,16 +165,16 @@ function App() {
           animate="visible"
           className="text-center mb-6 sm:mb-8 md:mb-10"
         >
-          <motion.div variants={fadeInUp} className="font-['Bebas_Neue'] font-normal tracking-[0.02em] leading-[1.1] text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
-            TRAIN LIKE
+          <motion.div variants={fadeInUp} className="font-['Bebas_Neue'] font-normal tracking-[0.02em] leading-[1.1] text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl">
+            We watched your last session
           </motion.div>
           
           <motion.div
             variants={scalePop}
             className="relative inline-block my-2 sm:my-3 md:my-4"
           >
-            <div className="font-['Bebas_Neue'] font-normal tracking-[0.02em] leading-[1.1] bg-gradient-to-r from-[#00A3FF] to-[#00A3FF] bg-clip-text text-transparent inline-block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
-              YOUR FAVORITE ATHLETE
+            <div className="font-['Bebas_Neue'] font-normal tracking-[0.02em] leading-[1.1] bg-gradient-to-r from-[#00A3FF] to-[#00A3FF] bg-clip-text text-transparent inline-block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[115px]">
+             We need to talk
             </div>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -196,43 +196,86 @@ function App() {
         </motion.p>
 
         {/* Sport Icons */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="flex flex-wrap justify-center items-center gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-10 md:mb-12"
-        >
+
+  <motion.div
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ delay: 0.5, duration: 0.5 }}
+  className="flex flex-nowrap justify-start md:justify-center items-center 
+             gap-4 sm:gap-5 md:gap-6 
+             mb-8 sm:mb-10 md:mb-12
+             px-4 sm:px-8 md:px-0
+             overflow-x-auto md:overflow-visible
+             whitespace-nowrap
+             scroll-px-6"
+>
           <motion.span animate={{ y: [0, -5, 0] }} transition={{ duration: 2, repeat: Infinity }} className="text-3xl sm:text-4xl md:text-5xl cursor-default">🏀</motion.span>
           <span className="text-white text-sm sm:text-base md:text-lg font-medium">Basketball</span>
           <span className="text-[#00A3FF] opacity-50 text-base sm:text-lg md:text-xl">•</span>
           <motion.span animate={{ y: [0, -5, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 0.5 }} className="text-3xl sm:text-4xl md:text-5xl cursor-default">⛳</motion.span>
           <span className="text-white text-sm sm:text-base md:text-lg font-medium">Golf</span>
+          <span className="text-[#00A3FF] opacity-50 text-base sm:text-lg md:text-xl">•</span>
+          <motion.span animate={{ y: [0, -5, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 1 }} className="text-3xl sm:text-4xl md:text-5xl cursor-default">⚽</motion.span>
+          <span className="text-white text-sm sm:text-base md:text-lg font-medium">Soccer</span>
         </motion.div>
+       
 
-        {/* Value Cards */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 w-full max-w-[1000px] mb-8 sm:mb-10 md:mb-12 px-2"
-        >
-          {[
-            { icon: '⚡', title: 'Live AI Coaching', desc: 'Real-time feedback in your AirPods' },
-            { icon: '🎯', title: 'Pro Athlete Training', desc: 'Mimic your favorite athlete\'s form' },
-            { icon: '📊', title: 'Advanced Analytics', desc: 'Track every rep & see progress' }
-          ].map((item, idx) => (
-            <motion.div
-              key={idx}
-              variants={scalePop}
-              whileHover={{ y: -8 }}
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-5 sm:p-6 md:p-7 text-center border border-white/10 hover:border-[#00A3FF]/30 transition-all duration-300 cursor-pointer"
-            >
-              <div className="text-4xl sm:text-5xl md:text-6xl mb-3">{item.icon}</div>
-              <h3 className="text-white text-base sm:text-lg md:text-xl font-bold mb-2">{item.title}</h3>
-              <p className="text-gray-400 text-xs sm:text-sm md:text-base leading-relaxed">{item.desc}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+       {/* Value Cards */}
+<motion.div
+  variants={staggerContainer}
+  initial="hidden"
+  animate="visible"
+  className="grid 
+             grid-cols-1 
+             sm:grid-cols-2 
+             lg:grid-cols-4
+             gap-4 sm:gap-5 md:gap-6 
+             w-full max-w-[1200px] 
+             mb-8 sm:mb-10 md:mb-12 
+             px-2"
+>
+  {[
+    { icon: '⚡', title: 'Live AI Coaching', desc: 'Real-time feedback in your AirPods' },
+    { icon: '🎯', title: 'Pro Athlete Training', desc: 'Train like your favorite pro athlete in real time' },
+    { icon: '📊', title: 'Advanced Analytics', desc: 'Track every rep. See your improvement daily' },
+    { icon: '🔥', title: 'Share Your Journey', desc: 'Post your session results directly to Instagram and TikTok and challenge your friends' }
+  ].map((item, idx) => (
+    <motion.div
+      key={idx}
+      variants={scalePop}
+      whileHover={{ y: -8 }}
+      className="bg-white/5 backdrop-blur-sm rounded-2xl 
+                 p-5 sm:p-6 md:p-7 
+                 border border-white/10 
+                 hover:border-[#00A3FF]/30 
+                 transition-all duration-300 cursor-pointer 
+                 text-center 
+                 flex flex-col lg:h-full"
+    >
+      {/* Icon */}
+      <div className="text-4xl sm:text-5xl md:text-6xl mb-3">
+        {item.icon}
+      </div>
+
+      {/* Title */}
+     <h3
+  className="text-white text-base sm:text-lg md:text-xl 
+             font-bold mb-2 
+             lg:whitespace-nowrap 
+             lg:min-h-[56px] 
+             lg:flex lg:items-center lg:justify-center"
+>
+  {item.title}
+</h3>
+      {/* Description */}
+      <p className="text-gray-400 text-xs sm:text-sm md:text-base 
+                    leading-relaxed 
+                    lg:min-h-[72px]">
+        {item.desc}
+      </p>
+    </motion.div>
+  ))}
+</motion.div>
 
         {/* Urgency Badge */}
         <motion.div
@@ -327,28 +370,27 @@ function App() {
   </div>
   
   {/* Stats with counter animation */}
-  <div className="text-center">
-    <div className="flex items-center justify-center gap-2 flex-wrap">
-      <motion.span 
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 1, type: "spring", stiffness: 200 }}
-        className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-[#00A3FF] to-[#00FFFF] bg-clip-text text-transparent"
-      >
-        15,000+
-      </motion.span>
-      <span className="text-white text-sm sm:text-base font-medium">athletes already</span>
-    </div>
-   
-    <motion.p 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.1 }}
-      className="text-gray-200 text-xs sm:text-sm mt-2 max-w-md mx-auto"
+<div className="text-center">
+  <div className="flex items-center justify-center gap-2 flex-wrap">
+    <motion.span 
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay: 1, type: "spring", stiffness: 200 }}
+      className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-[#00A3FF] to-[#00FFFF] bg-clip-text text-transparent whitespace-nowrap"
     >
-      <span className="text-[#00A3FF] font-semibold">"Game changer!"</span> — Top athletes worldwide
-    </motion.p>
+      Be among the first to get access
+    </motion.span>
   </div>
+
+  <motion.p 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 1.1 }}
+    className="text-gray-400 text-xs sm:text-sm mt-3 max-w-md mx-auto"
+  >
+    <span className="text-[#00A3FF] font-semibold">"Game changer!"</span> — Top athletes worldwide
+  </motion.p>
+</div>
   
 
 </motion.div>
@@ -370,12 +412,14 @@ function App() {
         <span className="text-xl sm:text-2xl">🏀</span>
         <span className="text-[#00A3FF] text-sm sm:text-base">+</span>
         <span className="text-xl sm:text-2xl">⛳</span>
+        <span className="text-[#00A3FF] text-sm sm:text-base">+</span>
+         <span className="text-xl sm:text-2xl">⚽</span>
        
       </div>
       
       {/* Main text */}
       <p className="text-white text-sm sm:text-base md:text-lg font-medium leading-relaxed">
-        Whether you're perfecting your jump shot or fixing your golf swing
+       Your potential called, It's tired of waiting
         <br className="hidden sm:block" />
         
       </p>
@@ -383,7 +427,7 @@ function App() {
       {/* Highlighted text */}
       <div className="mt-2">
         <span className="text-[#00A3FF] text-base sm:text-lg md:text-xl font-bold bg-gradient-to-r from-[#00A3FF] to-[#00FFFF] bg-clip-text text-transparent">
-          Athlete.AI has you covered.
+          Athlete.AI — stop leaving it on the table
         </span>
       </div>
       
