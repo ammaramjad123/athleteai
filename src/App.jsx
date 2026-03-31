@@ -151,10 +151,8 @@ function App() {
   whileHover={{ scale: 1.02 }}
 >
   <div className="flex flex-col items-center">
-    <img src="/logo.png" alt="Athlete.AI" className="h-32 sm:h-24 md:h-36 lg:h-38 w-auto drop-shadow-[0_0_20px_rgba(0,163,255,0.2)] transition-all duration-300 mx-auto" />
-    <div className="text-[8px] text-gray-700 mt-1 opacity-0 group-hover:opacity-100 transition-opacity text-center">
-      triple-click to export emails
-    </div>
+    <img src="/logo.png" alt="Athlete.AI" className="h-32 sm:h-24 md:h-40 lg:h-50 w-auto drop-shadow-[0_0_20px_rgba(0,163,255,0.2)] transition-all duration-300 mx-auto" />
+   
   </div>
 </motion.div>
 
@@ -388,7 +386,7 @@ function App() {
     transition={{ delay: 1.1 }}
     className="text-gray-400 text-xs sm:text-sm mt-3 max-w-md mx-auto"
   >
-    <span className="text-[#00A3FF] font-semibold">"Game changer!"</span> — Top athletes worldwide
+   
   </motion.p>
 </div>
   
