@@ -5,9 +5,9 @@ import { FaInstagram, FaTiktok } from 'react-icons/fa';
 
 // EmailJS Configuration - Replace with your actual keys
 const EMAILJS_CONFIG = {
-  PUBLIC_KEY: 'YOUR_EMAILJS_PUBLIC_KEY',
-  SERVICE_ID: 'service_athleteai',
-  TEMPLATE_ID: 'template_waitlist'
+  PUBLIC_KEY: 'GoiQd6DBGO1lWdsW5',
+  SERVICE_ID: 'service_vrjj6cv',
+  TEMPLATE_ID: 'template_7l5xmo8'
 };
 
 function App() {
@@ -36,28 +36,47 @@ function App() {
   }, []);
 
   const saveEmail = async (userEmail) => {
-    const existingEmails = JSON.parse(localStorage.getItem('athlete_ai_waitlist') || '[]');
-    
-    if (existingEmails.includes(userEmail)) {
-      setStatus({ type: 'info', message: '✨ Already on the list! You\'re in.' });
-      return false;
+  const existingEmails = JSON.parse(localStorage.getItem('athlete_ai_waitlist') || '[]');
+  
+  if (existingEmails.includes(userEmail)) {
+    setStatus({ type: 'info', message: '✨ Already on the list! You\'re in.' });
+    return false;
+  }
+
+  const updatedEmails = [...existingEmails, userEmail];
+  localStorage.setItem('athlete_ai_waitlist', JSON.stringify(updatedEmails));
+
+  // ✅ SEND TO GOOGLE SHEET
+  try {
+  const response = await fetch(
+    "https://script.google.com/macros/s/AKfycbz64GGYlp_W15xsb_YMHUQ4v0NXxi2C9y0tIrK3-e8SZf1qAJfqifdTtP-yw_fVKuPv/exec",
+    {
+      method: "POST",
+      body: JSON.stringify({ email: userEmail }),
     }
+  );
 
-    const updatedEmails = [...existingEmails, userEmail];
-    localStorage.setItem('athlete_ai_waitlist', JSON.stringify(updatedEmails));
+  const result = await response.json();
+  console.log("Sheet response:", result);
 
-    if (EMAILJS_CONFIG.PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') {
-      try {
-        await emailjs.send(
-          EMAILJS_CONFIG.SERVICE_ID,
-          EMAILJS_CONFIG.TEMPLATE_ID,
-          { user_email: userEmail, to_email: userEmail }
-        );
-      } catch (error) {}
-    }
+} catch (error) {
+  console.error("Google Sheet Error:", error);
+}
 
-    return true;
-  };
+  // Optional: EmailJS
+  if (EMAILJS_CONFIG.PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') {
+    try {
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        { user_email: userEmail, to_email: userEmail }
+      );
+    } catch (error) {}
+  }
+
+  return true;
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,7 +91,7 @@ function App() {
 
     const success = await saveEmail(email);
     if (success) {
-      setStatus({ type: 'success', message: '✅ Welcome! Check your inbox.' });
+      setStatus({ type: 'success', message: '✅ Welcome! You are signed up.' });
       setEmail('');
     }
     
@@ -151,7 +170,7 @@ function App() {
   whileHover={{ scale: 1.02 }}
 >
   <div className="flex flex-col items-center">
-    <img src="/logo.png" alt="Athlete.AI" className="h-38 sm:h-24 md:h-40 lg:h-50 w-auto drop-shadow-[0_0_20px_rgba(0,163,255,0.2)] transition-all duration-300 mx-auto" />
+    <img src="/logo.png" alt="Athlete.AI" className="h-48 sm:h-44 md:h-40 lg:h-50 w-auto drop-shadow-[0_0_20px_rgba(0,163,255,0.2)] transition-all duration-300 mx-auto" />
    
   </div>
 </motion.div>
@@ -163,7 +182,7 @@ function App() {
           animate="visible"
           className="text-center mb-6 sm:mb-8 md:mb-10"
         >
-          <motion.div variants={fadeInUp} className="font-['Bebas_Neue'] font-normal tracking-[0.02em] leading-[1.1] text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl">
+          <motion.div variants={fadeInUp} className="font-['Bebas_Neue'] font-normal tracking-[0.02em] leading-[1.1] text-white text-5xl sm:text-6xl md:text-7xl lg:text-[78px] xl:text-[84px]">
             We watched your last session
           </motion.div>
           
@@ -171,7 +190,7 @@ function App() {
             variants={scalePop}
             className="relative inline-block my-2 sm:my-3 md:my-4"
           >
-            <div className="font-['Bebas_Neue'] font-normal tracking-[0.02em] leading-[1.1] bg-gradient-to-r from-[#00A3FF] to-[#00A3FF] bg-clip-text text-transparent inline-block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[115px]">
+            <div className="font-['Bebas_Neue'] font-normal tracking-[0.02em] leading-[1.1] bg-gradient-to-r from-[#00A3FF] to-[#00A3FF] bg-clip-text text-transparent inline-block text-5xl sm:text-6xl md:text-7xl lg:text-[90px] xl:text-[98px]">
              We need to talk
             </div>
             <motion.div
@@ -233,9 +252,9 @@ function App() {
              px-2"
 >
   {[
-    { icon: '⚡', title: 'Live AI Coaching', desc: 'Real-time feedback in your AirPods' },
+    { icon: '⚡', title: 'Live AI Coaching', desc: 'Real time voice feedback instantly' },
     { icon: '🎯', title: 'Pro Athlete Training', desc: 'Train like your favorite pro athlete in real time' },
-    { icon: '📊', title: 'Advanced Analytics', desc: 'Track every rep. See your improvement daily' },
+    { icon: '📊', title: 'Performance Stats', desc: 'Track every rep. See your improvement daily' },
     { icon: '🔥', title: 'Share Your Journey', desc: 'Post your session results directly to Instagram and TikTok and challenge your friends' }
   ].map((item, idx) => (
     <motion.div
@@ -347,25 +366,38 @@ function App() {
   className="flex flex-col items-center justify-center gap-4 sm:gap-3 mb-8 sm:mb-10 md:mb-12"
 >
   {/* Avatars with animation */}
-  <div className="flex items-center justify-center">
-    <div className="flex -space-x-2 sm:-space-x-3">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <motion.div
-          key={i}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.9 + (i * 0.05), type: "spring", stiffness: 200 }}
-          className="relative"
-        >
-          <div className="w-8 h-8 sm:w-9 md:w-10 lg:w-11 h-8 sm:h-9 md:h-10 lg:h-11 rounded-full bg-gradient-to-br from-[#00A3FF] to-[#00FFFF] border-2 border-black shadow-lg shadow-[#00A3FF]/20" />
-          {/* Optional: Add verification badge */}
-          {i === 1 && (
-            <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border border-black" />
-          )}
-        </motion.div>
-      ))}
-    </div>
+<div className="flex items-center justify-center">
+  <div className="flex -space-x-2 sm:-space-x-3">
+    {[
+      "/user1.jpg",
+      "/user2.jpg",
+      "/user3.jpg",
+      "/user4.jpg",
+      "/user5.jpg",
+    ].map((src, i) => (
+      <motion.div
+        key={i}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.9 + (i * 0.05), type: "spring", stiffness: 200 }}
+        className="relative"
+      >
+        <img
+          src={src}
+          alt={`User ${i + 1}`}
+          className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 
+                     rounded-full object-cover border-2 border-black 
+                     shadow-lg shadow-[#00A3FF]/20"
+        />
+
+        {/* Optional: Add verification badge */}
+        {i === 0 && (
+          <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border border-black" />
+        )}
+      </motion.div>
+    ))}
   </div>
+</div>
   
   {/* Stats with counter animation */}
 <div className="text-center">
@@ -376,7 +408,7 @@ function App() {
       transition={{ delay: 1, type: "spring", stiffness: 200 }}
       className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-[#00A3FF] to-[#00FFFF] bg-clip-text text-transparent whitespace-nowrap"
     >
-      Be among the first to get access
+      Claim Your Early Access Spot
     </motion.span>
   </div>
 
