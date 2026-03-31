@@ -139,7 +139,7 @@ function App() {
       <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#00A3FF] rounded-full blur-[160px] opacity-4 pointer-events-none animate-pulse-slow" />
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-12 max-w-[1200px] mx-auto">
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-3 sm:py-6 max-w-[1200px] mx-auto">
         
        {/* Logo */}
 <motion.div
@@ -151,7 +151,7 @@ function App() {
   whileHover={{ scale: 1.02 }}
 >
   <div className="flex flex-col items-center">
-    <img src="/logo.png" alt="Athlete.AI" className="h-32 sm:h-24 md:h-40 lg:h-50 w-auto drop-shadow-[0_0_20px_rgba(0,163,255,0.2)] transition-all duration-300 mx-auto" />
+    <img src="/logo.png" alt="Athlete.AI" className="h-38 sm:h-24 md:h-40 lg:h-50 w-auto drop-shadow-[0_0_20px_rgba(0,163,255,0.2)] transition-all duration-300 mx-auto" />
    
   </div>
 </motion.div>
