@@ -237,7 +237,7 @@ function App() {
         </motion.div>
        
 
-       {/* Value Cards */}
+ {/* Value Cards */}
 <motion.div
   variants={staggerContainer}
   initial="hidden"
@@ -253,8 +253,8 @@ function App() {
 >
   {[
     { icon: '⚡', title: 'Live AI Coaching', desc: 'Real time voice feedback instantly' },
-    { icon: '🎯', title: 'Pro Athlete Training', desc: 'Train like your favorite pro athlete in real time' },
-    { icon: '📊', title: 'Performance Stats', desc: 'Track every rep. See your improvement daily' },
+    { icon: '🏆', title: 'Pro Level Coaching', desc: 'Real pro training techniques applied to your form and corrected live after every rep' },
+    { icon: 'chart', title: 'Track Your Progress', desc: 'Every rep tracked in real time with the personal performance dashboard' },
     { icon: '🔥', title: 'Share Your Journey', desc: 'Post your session results directly to Instagram and TikTok and challenge your friends' }
   ].map((item, idx) => (
     <motion.div
@@ -270,20 +270,44 @@ function App() {
                  flex flex-col lg:h-full"
     >
       {/* Icon */}
-      <div className="text-4xl sm:text-5xl md:text-6xl mb-3">
-        {item.icon}
+      <div className="text-4xl sm:text-5xl md:text-6xl mb-3 flex justify-center">
+        {item.icon === 'chart' ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            {/* White axis */}
+            <path
+              d="M3 5v16h18"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+
+            {/* Taller blue bars */}
+            <rect x="8" y="6" width="2.5" height="12" fill="#00A3FF" rx="1" />
+            <rect x="12.5" y="4" width="2.5" height="14" fill="#00A3FF" rx="1" />
+            <rect x="17" y="9" width="2.5" height="9" fill="#00A3FF" rx="1" />
+          </svg>
+        ) : (
+          item.icon
+        )}
       </div>
 
       {/* Title */}
-     <h3
-  className="text-white text-base sm:text-lg md:text-xl 
-             font-bold mb-2 
-             lg:whitespace-nowrap 
-             lg:min-h-[56px] 
-             lg:flex lg:items-center lg:justify-center"
->
-  {item.title}
-</h3>
+      <h3
+        className="text-white text-base sm:text-lg md:text-xl 
+                   font-bold mb-2 
+                   lg:whitespace-nowrap 
+                   lg:min-h-[56px] 
+                   lg:flex lg:items-center lg:justify-center"
+      >
+        {item.title}
+      </h3>
+
       {/* Description */}
       <p className="text-gray-400 text-xs sm:text-sm md:text-base 
                     leading-relaxed 
@@ -449,7 +473,7 @@ function App() {
       
       {/* Main text */}
       <p className="text-white text-sm sm:text-base md:text-lg font-medium leading-relaxed">
-       Your potential called, It's tired of waiting
+       Your potential called. It's tired of waiting.
         <br className="hidden sm:block" />
         
       </p>
@@ -457,14 +481,14 @@ function App() {
       {/* Highlighted text */}
       <div className="mt-2">
         <span className="text-[#00A3FF] text-base sm:text-lg md:text-xl font-bold bg-gradient-to-r from-[#00A3FF] to-[#00FFFF] bg-clip-text text-transparent">
-          Athlete.AI — stop leaving it on the table
+          Athlete.AI — Stop leaving it on the table.
         </span>
       </div>
       
       {/* Subtle badge */}
       <div className="mt-3 inline-flex items-center gap-1 px-3 py-1 bg-white/5 rounded-full">
         <span className="text-[#00A3FF] text-[10px] sm:text-xs">✓</span>
-        <span className="text-gray-400 text-[9px] sm:text-[10px]">AI-powered coaching for 20+ sports</span>
+        <span className="text-gray-400 text-[9px] sm:text-[10px]">AI-powered coaching for everyone</span>
       </div>
     </div>
   </div>
