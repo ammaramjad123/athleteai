@@ -389,39 +389,7 @@ function App() {
   transition={{ delay: 0.9, duration: 0.5 }}
   className="flex flex-col items-center justify-center gap-4 sm:gap-3 mb-8 sm:mb-10 md:mb-12"
 >
-  {/* Avatars with animation */}
-<div className="flex items-center justify-center">
-  <div className="flex -space-x-2 sm:-space-x-3">
-    {[
-      "/user1.jpg",
-      "/user2.jpg",
-      "/user3.jpg",
-      "/user4.jpg",
-      "/user5.jpg",
-    ].map((src, i) => (
-      <motion.div
-        key={i}
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.9 + (i * 0.05), type: "spring", stiffness: 200 }}
-        className="relative"
-      >
-        <img
-          src={src}
-          alt={`User ${i + 1}`}
-          className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 
-                     rounded-full object-cover border-2 border-black 
-                     shadow-lg shadow-[#00A3FF]/20"
-        />
-
-        {/* Optional: Add verification badge */}
-        {i === 0 && (
-          <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border border-black" />
-        )}
-      </motion.div>
-    ))}
-  </div>
-</div>
+ 
   
   {/* Stats with counter animation */}
 <div className="text-center">
@@ -432,7 +400,7 @@ function App() {
       transition={{ delay: 1, type: "spring", stiffness: 200 }}
       className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-[#00A3FF] to-[#00FFFF] bg-clip-text text-transparent whitespace-nowrap"
     >
-      Claim Your Early Access Spot
+      Free to join — No credit card required
     </motion.span>
   </div>
 
@@ -481,7 +449,7 @@ function App() {
       {/* Highlighted text */}
       <div className="mt-2">
         <span className="text-[#00A3FF] text-base sm:text-lg md:text-xl font-bold bg-gradient-to-r from-[#00A3FF] to-[#00FFFF] bg-clip-text text-transparent">
-          Athlete.AI — Stop leaving it on the table.
+          Athlete.AI — Stop leaving it on the table
         </span>
       </div>
       
