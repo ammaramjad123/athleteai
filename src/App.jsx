@@ -253,7 +253,7 @@ function App() {
 >
   {[
     { icon: '⚡', title: 'Live AI Coaching', desc: 'Real time voice feedback instantly' },
-    { icon: '🏆', title: 'Pro Level Coaching', desc: 'Real pro training techniques applied to your form and corrected live after every rep' },
+    { icon: '🏆', title: 'Pro Level Coaching', desc: 'Train using real pro techniques with live corrections on every rep' },
     { icon: 'chart', title: 'Track Your Progress', desc: 'Every rep tracked in real time with the personal performance dashboard' },
     { icon: '🔥', title: 'Share Your Journey', desc: 'Post your session results directly to Instagram and TikTok and challenge your friends' }
   ].map((item, idx) => (
@@ -449,7 +449,7 @@ function App() {
       {/* Highlighted text */}
       <div className="mt-2">
         <span className="text-[#00A3FF] text-base sm:text-lg md:text-xl font-bold bg-gradient-to-r from-[#00A3FF] to-[#00FFFF] bg-clip-text text-transparent">
-          Athlete.AI — Stop leaving it on the table
+          Stop leaving it on the table — Athlete.AI
         </span>
       </div>
       
