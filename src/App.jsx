@@ -252,7 +252,7 @@ function App() {
              px-2"
 >
   {[
-    { icon: '⚡', title: 'Live AI Coaching', desc: 'Real time voice feedback instantly' },
+    { icon: '⚡', title: 'Live AI Coaching', desc: 'Instant corrections while you train' },
     { icon: '🏆', title: 'Pro Level Coaching', desc: 'Train using real pro techniques with live corrections on every rep' },
     { icon: 'chart', title: 'Track Your Progress', desc: 'Every rep tracked in real time with the personal performance dashboard' },
     { icon: '🔥', title: 'Share Your Journey', desc: 'Post your session results directly to Instagram and TikTok and challenge your friends' }
